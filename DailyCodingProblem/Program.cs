@@ -7,7 +7,9 @@ namespace DailyCodingProblem
     {
         static void Main(string[] args)
         {
-            Problem1();
+            //Problem1();
+
+            Problem2();
         }
 
         /// <summary>
@@ -41,6 +43,54 @@ namespace DailyCodingProblem
             }
 
             Console.WriteLine($"Sorry! There is not two numbers in the list that add up to {number}");
+        }
+
+        /// <summary>
+        /// Given an array of integers, return a new array such that each element of the new array is the product 
+        /// of all the numbers in the original array except the one at the current index.
+        /// </summary>
+        static void Problem2()
+        {
+            Console.WriteLine("Please enter 5 integers, one at the time!");
+            List<int> listOfNumbers = new List<int>();
+
+            while (listOfNumbers.Count < 5)
+            {
+                Console.Write("Enter an integer: ");
+
+                int number;
+
+                while (!int.TryParse(Console.ReadLine(), out number))
+                {
+                    Console.Write("Your input is not valid. Please enter an integer: ");
+                }
+
+                listOfNumbers.Add(number);
+            }
+
+            List<int> listOfProducts = new List<int>();
+
+            for (int i = 0; i < listOfNumbers.Count; i++)
+            {
+                int product = 1;
+
+                for (int j = 0; j < listOfNumbers.Count; j++)
+                {
+                    if (j == i)
+                    {
+                        continue;
+                    }
+
+                    product *= listOfNumbers[j];
+                }
+
+                listOfProducts.Add(product);
+            }
+
+            foreach (int number in listOfProducts)
+            {
+                Console.Write($"{number} ");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DailyCodingProblem.Models;
+using System;
 using System.Collections.Generic;
 
 namespace DailyCodingProblem
@@ -9,7 +10,9 @@ namespace DailyCodingProblem
         {
             //Problem1();
 
-            Problem2();
+            //Problem2();
+
+            Problem3();
         }
 
         /// <summary>
@@ -92,5 +95,39 @@ namespace DailyCodingProblem
                 Console.Write($"{number} ");
             }
         }
+
+        static void Problem3()
+        {
+            Node root = new Node(
+                0,
+                new Node(
+                    1,
+                    new Node(11, null, null),
+                    new Node(12, null, null)),
+                new Node(
+                    2,
+                    new Node(21, null, null),
+                    new Node(22, null, null)));
+
+            Console.WriteLine(SerializeProblem3(root));
+        }
+
+        static string SerializeProblem3(Node root)
+        { 
+            if (root == null)
+            {
+                return "null / ";
+            }
+            string serializedTree = string.Empty;
+
+            serializedTree += root.Value.ToString() + " / ";          
+
+            serializedTree += SerializeProblem3(root.LeftChild);
+
+            serializedTree += SerializeProblem3(root.RightChild);
+
+            return serializedTree;
+        }
+
     }
 }

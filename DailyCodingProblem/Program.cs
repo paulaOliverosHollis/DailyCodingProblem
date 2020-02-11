@@ -133,5 +133,30 @@ namespace DailyCodingProblem
         {
 
         }
+
+        /// <summary>
+        /// Given an array of integers, find the first missing positive integer in linear time and constant space. 
+        /// In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+        /// </summary>
+        static void Problem4()
+        {
+            List<int> numbers = new List<int>() { 3, 4, -1, 1 };
+            int minValue = 0;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (numbers[i] < minValue)
+                {
+                    minValue = numbers[i];
+                }
+            }
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+
+            }
+           
+            //numbers.Exists(element => element == (numbers[0] + 1));
+        }
     }
 }

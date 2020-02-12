@@ -12,7 +12,9 @@ namespace DailyCodingProblem
 
             //Problem2();
 
-            Problem3();
+            //Problem3();
+
+            Problem4();
         }
 
         /// <summary>
@@ -113,14 +115,14 @@ namespace DailyCodingProblem
         }
 
         static string SerializeProblem3(Node root)
-        { 
+        {
             if (root == null)
             {
                 return "null / ";
             }
             string serializedTree = string.Empty;
 
-            serializedTree += root.Value.ToString() + " / ";          
+            serializedTree += root.Value.ToString() + " / ";
 
             serializedTree += SerializeProblem3(root.LeftChild);
 
@@ -129,10 +131,10 @@ namespace DailyCodingProblem
             return serializedTree;
         }
 
-        static Node DeserializeProblem3(string serializedTree)
-        {
+        //static Node DeserializeProblem3(string serializedTree)
+        //{
 
-        }
+        //}
 
         /// <summary>
         /// Given an array of integers, find the first missing positive integer in linear time and constant space. 
@@ -141,22 +143,15 @@ namespace DailyCodingProblem
         static void Problem4()
         {
             List<int> numbers = new List<int>() { 3, 4, -1, 1 };
-            int minValue = 0;
 
-            for (int i = 0; i < numbers.Count; i++)
+            for (int i = 1; i < int.MaxValue; i++)
             {
-                if (numbers[i] < minValue)
+                if (!numbers.Exists(element => element == i))
                 {
-                    minValue = numbers[i];
+                    Console.WriteLine($"The lowest positive integer that does not exist in the array is {i}");
+                    break;
                 }
             }
-
-            for (int i = 0; i < numbers.Count; i++)
-            {
-
-            }
-           
-            //numbers.Exists(element => element == (numbers[0] + 1));
         }
     }
 }

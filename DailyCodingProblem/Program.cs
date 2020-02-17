@@ -157,8 +157,8 @@ namespace DailyCodingProblem
         }
 
         /// <summary>
-        /// cons(a, b) constructs a pair, and car(pair) and cdr(pair) returns the first and last element of that pair. For example, car(cons(3, 4)) returns 3, 
-        /// and cdr(cons(3, 4)) returns 4.
+        /// Write two functions that take a pair (it can be a pair of ints, strings, etc.) as a parameter. One of the functions returns 
+        /// the first item of the pair and the other function returns the second item of the pair.         
         /// </summary>
         static void Problem5()
         {

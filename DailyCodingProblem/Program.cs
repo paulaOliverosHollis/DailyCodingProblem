@@ -147,10 +147,10 @@ namespace DailyCodingProblem
                 if (!numbers.Exists(element => element == i))
                 {
                     Console.WriteLine($"The lowest positive integer that does not exist in the array is {i}");
-                    break;
-                }
+                    return;
+                }                
             }
-
+            
             Console.WriteLine($"There is no possitive integer under or equal to {int.MaxValue} that is not a part of the array.");
         }
     }

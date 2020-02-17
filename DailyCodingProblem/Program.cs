@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DailyCodingProblem.Models;
+using System;
 using System.Collections.Generic;
 
 namespace DailyCodingProblem
@@ -9,7 +10,11 @@ namespace DailyCodingProblem
         {
             //Problem1();
 
-            Problem2();
+            //Problem2();
+
+            //Problem3();
+
+            Problem4();
         }
 
         /// <summary>
@@ -91,6 +96,62 @@ namespace DailyCodingProblem
             {
                 Console.Write($"{number} ");
             }
+        }
+
+        static void Problem3()
+        {
+            Node root = new Node(
+                0,
+                new Node(
+                    1,
+                    new Node(11, null, null),
+                    new Node(12, null, null)),
+                new Node(
+                    2,
+                    new Node(21, null, null),
+                    new Node(22, null, null)));
+
+            Console.WriteLine(SerializeProblem3(root));
+        }
+
+        static string SerializeProblem3(Node root)
+        {
+            if (root == null)
+            {
+                return "null/";
+            }
+            string serializedTree = root.Value.ToString() + "/";
+            
+            serializedTree += SerializeProblem3(root.LeftChild);
+
+            serializedTree += SerializeProblem3(root.RightChild);
+
+            return serializedTree;
+        }
+
+        //static Node DeserializeProblem3(string serializedTree)
+        //{
+
+        //}
+
+        /// <summary>
+        /// Given an array of integers, find the first missing positive integer in linear time and constant space. 
+        /// In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+        /// </summary>
+        static void Problem4()
+        {
+            List<int> numbers = new List<int>() { 3, 4, -1, 1 };
+
+            for (int i = 1; i <= int.MaxValue; i++)
+            {
+                if (!numbers.Exists(element => element == i))
+                {
+                    Console.WriteLine($"The lowest positive integer that does not exist in the array is {i}");
+                    return;
+                }                
+            }
+            
+            Console.WriteLine($"There is no possitive integer under or equal to {int.MaxValue} that is not a part of the array.");
         }
     }
 }

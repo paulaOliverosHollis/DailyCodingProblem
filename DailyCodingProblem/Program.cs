@@ -14,7 +14,9 @@ namespace DailyCodingProblem
 
             //Problem3();
 
-            Problem4();
+            //Problem4();
+
+            Problem5();
         }
 
         /// <summary>
@@ -152,6 +154,28 @@ namespace DailyCodingProblem
             }
             
             Console.WriteLine($"There is no possitive integer under or equal to {int.MaxValue} that is not a part of the array.");
+        }
+
+        /// <summary>
+        /// cons(a, b) constructs a pair, and car(pair) and cdr(pair) returns the first and last element of that pair. For example, car(cons(3, 4)) returns 3, 
+        /// and cdr(cons(3, 4)) returns 4.
+        /// </summary>
+        static void Problem5()
+        {
+            Pair pairOfInts = new Pair(7, 8);
+
+            Console.WriteLine($"The pair is [{pairOfInts.First}, {pairOfInts.Second}]. The function GetFirstItem(pair) returned [{GetFirstItem(pairOfInts)}] and " +
+                $"the function GetSecondItem(pair) returned [{GetSecondItem(pairOfInts)}].");
+        }
+
+        static int GetFirstItem(Pair pair)
+        {
+            return pair.First;
+        }
+
+        static int GetSecondItem(Pair pair)
+        {
+            return pair.Second;
         }
     }
 }

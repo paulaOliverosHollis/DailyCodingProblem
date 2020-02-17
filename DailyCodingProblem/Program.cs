@@ -118,12 +118,10 @@ namespace DailyCodingProblem
         {
             if (root == null)
             {
-                return "null / ";
+                return "null/";
             }
-            string serializedTree = string.Empty;
-
-            serializedTree += root.Value.ToString() + " / ";
-
+            string serializedTree = root.Value.ToString() + "/";
+            
             serializedTree += SerializeProblem3(root.LeftChild);
 
             serializedTree += SerializeProblem3(root.RightChild);
@@ -144,7 +142,7 @@ namespace DailyCodingProblem
         {
             List<int> numbers = new List<int>() { 3, 4, -1, 1 };
 
-            for (int i = 1; i < int.MaxValue; i++)
+            for (int i = 1; i <= int.MaxValue; i++)
             {
                 if (!numbers.Exists(element => element == i))
                 {
@@ -152,6 +150,8 @@ namespace DailyCodingProblem
                     break;
                 }
             }
+
+            Console.WriteLine($"There is no possitive integer under or equal to {int.MaxValue} that is not a part of the array.");
         }
     }
 }

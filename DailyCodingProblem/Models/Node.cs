@@ -18,5 +18,10 @@ namespace DailyCodingProblem.Models
             LeftChild = leftChild;
             RightChild = rightChild;
         }
+
+        public Node(int value)
+        {
+            Value = value;
+        }
     }
 }

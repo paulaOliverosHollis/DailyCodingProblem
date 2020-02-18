@@ -16,7 +16,9 @@ namespace DailyCodingProblem
 
             //Problem4();
 
-            Problem5();
+            //Problem5();
+
+            Problem6();
         }
 
         /// <summary>
@@ -123,7 +125,7 @@ namespace DailyCodingProblem
                 return "null/";
             }
             string serializedTree = root.Value.ToString() + "/";
-            
+
             serializedTree += SerializeProblem3(root.LeftChild);
 
             serializedTree += SerializeProblem3(root.RightChild);
@@ -150,9 +152,9 @@ namespace DailyCodingProblem
                 {
                     Console.WriteLine($"The lowest positive integer that does not exist in the array is {i}");
                     return;
-                }                
+                }
             }
-            
+
             Console.WriteLine($"There is no possitive integer under or equal to {int.MaxValue} that is not a part of the array.");
         }
 
@@ -176,6 +178,38 @@ namespace DailyCodingProblem
         static int GetSecondItem(Pair pair)
         {
             return pair.Second;
+        }
+
+        /// <summary>
+        /// Create a function that accepts RGB values (3 integers) and converts them into their Hexadecimal equivalent
+        ///The valid decimal values for RGB are 0 - 255. Any(r, g, b) argument values that fall out of that range should be rounded to the closest valid value.
+        ///Hexadecimal Colors should always be 6 digits(i.e.don't shorten 000000 to 0)
+        /// </summary>
+        static void Problem6()
+        {
+            Console.WriteLine(ConvertToHex(CheckDecimalValueRange(-1), CheckDecimalValueRange(285), CheckDecimalValueRange(255)));
+        }
+
+        static string ConvertToHex(int r, int g, int b)
+        {
+            return ($"{r.ToString("X2")}{g.ToString("X2")}{b.ToString("X2")}");
+        }
+
+        //Checks decimal values to make sure that they are between 0 and 255. If value is out of range, it rounds up or down.
+        static int CheckDecimalValueRange(int value)
+        {
+            if (value < 0)
+            {
+                return 0;
+            }
+            else if (value > 255)
+            {
+                return 255;
+            }
+            else
+            {
+                return value;
+            }
         }
     }
 }

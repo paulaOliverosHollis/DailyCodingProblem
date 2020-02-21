@@ -20,7 +20,7 @@ namespace DailyCodingProblem
 
             //Problem6();
 
-            Console.WriteLine(Problem7("111"));
+            Console.WriteLine(Problem7("1325"));
         }
 
         /// <summary>
@@ -221,32 +221,24 @@ namespace DailyCodingProblem
         /// </summary>
         static int Problem7(string message)
         {
-            int paths = 0; 
+            int path = 0;
 
-            if ( message == String.Empty || message.Length == 1)
+            if (message == string.Empty)
             {
-                return ++paths;
+                return 1;
             }
 
-            int single;
-
-            bool isDecodable = int.TryParse(message[0].ToString(), out single);
-
-            if (isDecodable && single > 0)
+            if (int.TryParse(message[0].ToString(), out int oneDigit) && oneDigit > 0)
             {
-                return Problem7(message.Substring(1));
+                path += Problem7(message.Substring(1));
             }
 
-            int combo;
-
-            isDecodable = int.TryParse(message.Substring(0, 2), out combo);
-
-            if (isDecodable && combo < 27)
+            if (message.Length > 1 && int.TryParse(message.Substring(0, 2), out int twoDigits) && twoDigits < 27)
             {
-                return Problem7(message.Substring(2));
+                path += Problem7(message.Substring(2));
             }
 
-            return paths;
-        }        
+            return path; 
+        }
     }
 }

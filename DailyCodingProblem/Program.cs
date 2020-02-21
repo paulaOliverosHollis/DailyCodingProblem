@@ -18,7 +18,9 @@ namespace DailyCodingProblem
 
             //Problem5();
 
-            Problem6();
+            //Problem6();
+
+            Console.WriteLine(Problem7("111"));
         }
 
         /// <summary>
@@ -217,9 +219,34 @@ namespace DailyCodingProblem
         /// For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
         /// You can assume that the messages are decodable. For example, '001' is not allowed.
         /// </summary>
-        static void Problem7()
+        static int Problem7(string message)
         {
+            int paths = 0; 
 
-        }
+            if ( message == String.Empty || message.Length == 1)
+            {
+                return ++paths;
+            }
+
+            int single;
+
+            bool isDecodable = int.TryParse(message[0].ToString(), out single);
+
+            if (isDecodable && single > 0)
+            {
+                return Problem7(message.Substring(1));
+            }
+
+            int combo;
+
+            isDecodable = int.TryParse(message.Substring(0, 2), out combo);
+
+            if (isDecodable && combo < 27)
+            {
+                return Problem7(message.Substring(2));
+            }
+
+            return paths;
+        }        
     }
 }

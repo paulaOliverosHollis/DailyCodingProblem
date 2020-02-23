@@ -221,7 +221,12 @@ namespace DailyCodingProblem
         /// </summary>
         static int Problem7(string message)
         {
-            if (string.IsNullOrEmpty(message))
+            if (message == null)
+            {
+                return 0;
+            }
+
+            if (message == string.Empty)
             {
                 return 1;
             }

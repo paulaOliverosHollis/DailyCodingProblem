@@ -18,7 +18,9 @@ namespace DailyCodingProblem
 
             //Problem5();
 
-            Problem6();
+            //Problem6();
+
+            Console.WriteLine(Problem7("0123"));
         }
 
         /// <summary>
@@ -182,8 +184,8 @@ namespace DailyCodingProblem
 
         /// <summary>
         /// Create a function that accepts RGB values (3 integers) and converts them into their Hexadecimal equivalent
-        ///The valid decimal values for RGB are 0 - 255. Any(r, g, b) argument values that fall out of that range should be rounded to the closest valid value.
-        ///Hexadecimal Colors should always be 6 digits(i.e.don't shorten 000000 to 0)
+        /// The valid decimal values for RGB are 0 - 255. Any(r, g, b) argument values that fall out of that range should be rounded to the closest valid value.
+        /// Hexadecimal Colors should always be 6 digits(i.e.don't shorten 000000 to 0)
         /// </summary>
         static void Problem6()
         {
@@ -210,6 +212,38 @@ namespace DailyCodingProblem
             {
                 return value;
             }
+        }
+
+        /// <summary>
+        /// Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+        /// For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+        /// You can assume that the messages are decodable. For example, '001' is not allowed.
+        /// </summary>
+        static int Problem7(string message)
+        {
+            if (message == null)
+            {
+                return 0;
+            }
+
+            if (message == string.Empty)
+            {
+                return 1;
+            }
+
+            int numberOfPaths = 0;
+
+            if (int.TryParse(message[0].ToString(), out int oneDigit) && oneDigit > 0)
+            {
+                numberOfPaths += Problem7(message.Substring(1));
+            }
+
+            if (message.Length > 1 && message[0] != '0' && int.TryParse(message.Substring(0, 2), out int twoDigits) && twoDigits < 27)
+            {
+                numberOfPaths += Problem7(message.Substring(2));
+            }
+
+            return numberOfPaths;
         }
     }
 }

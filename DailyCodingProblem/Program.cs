@@ -12,7 +12,7 @@ namespace DailyCodingProblem
 
             //Problem2();
 
-            //Problem3();
+            Problem3();
 
             //Problem4();
 
@@ -20,7 +20,7 @@ namespace DailyCodingProblem
 
             //Problem6();
 
-            Console.WriteLine(Problem7("0123"));
+            //Console.WriteLine(Problem7("0123"));
         }
 
         /// <summary>
@@ -104,6 +104,10 @@ namespace DailyCodingProblem
             }
         }
 
+        /// <summary>
+        /// Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s),
+        /// which deserializes the string back into the tree.
+        /// </summary>
         static void Problem3()
         {
             Node root = new Node(
@@ -135,10 +139,21 @@ namespace DailyCodingProblem
             return serializedTree;
         }
 
-        //static Node DeserializeProblem3(string serializedTree)
-        //{
+        static Node DeserializeProblem3(string serializedTree)
+        {
+            string[] blah = serializedTree.Split('/');
 
-        //}
+            Node tree = new Node(
+               int.Parse(blah[0]),
+               new Node(
+                   int.Parse(blah[1]),
+                   new Node(int.Parse(blah[2])),
+                   new Node(int.Parse(blah[5]))),
+               new Node(
+                   int.Parse(blah[8]),
+                   new Node(int.Parse(blah[9])),
+                   new Node(int.Parse(blah[12]))));
+        }
 
         /// <summary>
         /// Given an array of integers, find the first missing positive integer in linear time and constant space. 
